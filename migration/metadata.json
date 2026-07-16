@@ -1,8 +1,0 @@
-{
-  "name": "MASAR | مسار",
-  "description": "منصة سعودية ذكية لخدمات النقل والخدمات اللوجستية، تربطك بأفضل مقدمي الخدمات لنقل السيارات، السطحات، الأثاث، والشاحنات في المملكة.",
-  "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
-}

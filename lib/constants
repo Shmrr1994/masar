@@ -1,0 +1,27 @@
+export const SERVICES = [
+  {
+    id: "car-transport",
+    title: "نقل السيارات",
+    slug: "car-transport",
+  },
+  {
+    id: "flatbed",
+    title: "السطحات",
+    slug: "flatbed",
+  },
+  {
+    id: "furniture",
+    title: "نقل الأثاث",
+    slug: "furniture",
+  },
+  {
+    id: "trucks",
+    title: "الشاحنات",
+    slug: "trucks",
+  },
+  {
+    id: "corporate",
+    title: "خدمات الشركات",
+    slug: "corporate",
+  },
+] as const;

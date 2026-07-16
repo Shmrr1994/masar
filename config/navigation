@@ -1,0 +1,22 @@
+export const navigation = [
+  {
+    label: "الرئيسية",
+    href: "/",
+  },
+  {
+    label: "الخدمات",
+    href: "/services",
+  },
+  {
+    label: "كيف يعمل",
+    href: "/how-it-works",
+  },
+  {
+    label: "المدن",
+    href: "/cities",
+  },
+  {
+    label: "تواصل",
+    href: "/contact",
+  },
+];

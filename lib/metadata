@@ -1,0 +1,14 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "MASAR | مسار",
+  description: "كل مشوار له مسار",
+  keywords: [
+    "نقل سيارات",
+    "سطحات",
+    "نقل أثاث",
+    "شاحنات",
+    "السعودية",
+    "MASAR",
+  ],
+};

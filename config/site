@@ -1,0 +1,24 @@
+export const siteConfig = {
+  name: "MASAR",
+  arabicName: "مسار",
+  slogan: "كل مشوار له مسار",
+
+  description:
+    "منصة سعودية متخصصة في نقل السيارات والسطحات والشاحنات ونقل الأثاث في جميع أنحاء المملكة.",
+
+  url: "https://masar.sa",
+
+  contact: {
+    phone: "92000000",
+    email: "info@masar.sa",
+  },
+
+  cities: [
+    "الرياض",
+    "الأحساء",
+    "الدمام",
+    "جدة",
+    "مكة",
+    "المدينة",
+  ],
+};

@@ -77,17 +77,17 @@ isScrolled
             {/* Actions */}
             <div id="navbar-actions" className="hidden sm:flex items-center gap-4">
               <a
-                href="tel:92000000"
+                href="tel:+966564094328"
                 className={`text-[15px] font-medium transition-colors duration-200 relative py-1 ${isScrolled ? "text-gray-700 hover:text-green-700" : "text-white hover:text-green-400" }`}              >
                 <PhoneCall className="w-4 h-4 text-brand-green" />
-                <span>92000000</span>
+                <span>+966564094328</span>
               </a>
               <button
                 id="navbar-cta-btn"
                 onClick={() => onOpenBooking()}
                 className="bg-brand-green hover:bg-brand-green-hover text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 shadow-md shadow-emerald-950/10 hover:shadow-lg hover:shadow-emerald-950/20 active:scale-[0.98] cursor-pointer flex items-center gap-2 sleek-glow-btn"
               >
-                <span>اطلب خدمة الآن</span>
+                <span>احجز الأن</span>
                 <ArrowLeft className="w-4 h-4 rotate-180" />
               </button>
             </div>
@@ -99,7 +99,7 @@ isScrolled
                 onClick={() => onOpenBooking()}
                 className="bg-brand-green hover:bg-brand-green-hover text-white px-4 py-2 rounded-lg font-medium text-xs transition-all duration-200 shadow-sm sleek-glow-btn"
               >
-                اطلب خدمة
+                احجز الأن
               </button>
               <button
                 id="navbar-mobile-toggle"
@@ -171,11 +171,11 @@ isScrolled
 
               <div className="border-t border-white/5 pt-6 flex flex-col gap-4">
                 <a
-                  href="tel:92000000"
+                  href="tel:+966564094328"
                   className="flex items-center justify-center gap-3 text-slate-200 hover:text-brand-green bg-slate-900/40 border border-white/5 py-3 rounded-xl text-sm font-medium transition-colors"
                 >
                   <PhoneCall className="w-4 h-4 text-brand-green" />
-                  <span>دعم العملاء: 92000000</span>
+                  <span>+966564094328</span>
                 </a>
                 <button
                   id="mobile-drawer-cta"
@@ -185,7 +185,7 @@ isScrolled
                   }}
                   className="w-full bg-brand-green hover:bg-brand-green-hover text-white py-3.5 rounded-xl font-medium text-sm transition-all duration-200 shadow-md text-center flex items-center justify-center gap-2 sleek-glow-btn"
                 >
-                  <span>طلب خدمة الآن</span>
+                  <span>احجز الآن</span>
                   <ArrowLeft className="w-4 h-4 rotate-180" />
                 </button>
               </div>

@@ -707,6 +707,9 @@ export default function BookingModal({ isOpen, onClose, selectedServiceId }: Boo
                 setToLocation("");
                 setDetails("");
                 setPhone("");
+                setName("");
+                setEmail("");
+                setAcceptedTerms(false);
                 onClose();
               }}
               className="w-full bg-slate-950 hover:bg-slate-900 text-white border border-white/10 py-3 rounded-xl font-bold text-xs text-center cursor-pointer shadow"

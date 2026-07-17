@@ -24,6 +24,10 @@ export default function BookingModal({ isOpen, onClose, selectedServiceId }: Boo
   const [toLocation, setToLocation] = useState("");
   const [details, setDetails] = useState("");
   const [phone, setPhone] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [acceptedTerms, setacceptedTerms] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Simulation states
@@ -135,27 +139,45 @@ export default function BookingModal({ isOpen, onClose, selectedServiceId }: Boo
 
   // Validation
   const validateStep2 = () => {
-    const newErrors: Record<string, string> = {};
-    if (!fromLocation.trim()) newErrors.fromLocation = "الرجاء تحديد موقع الاستلام بدقة";
-    if (!toLocation.trim()) newErrors.toLocation = "الرجاء تحديد موقع التسليم بدقة";
-    if (!phone.trim()) {
-      newErrors.phone = "الرجاء إدخال رقم الجوال";
-    } else if (!/^05\d{8}$/.test(phone.trim())) {
-      newErrors.phone = "الرجاء إدخال رقم جوال سعودي صحيح يبدأ بـ 05 ويتكون من 10 أرقام";
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  if (!name.trim()) {
+    alert("يرجى إدخال الاسم");
+    return false;
+  }
 
-  const handleNextStep = () => {
-    if (step === 1) {
-      setStep(2);
-    } else if (step === 2) {
-      if (validateStep2()) {
-        setStep(3);
-      }
-    }
-  };
+  if (!email.trim()) {
+    alert("يرجى إدخال البريد الإلكتروني");
+    return false;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(email)) {
+    alert("البريد الإلكتروني غير صحيح");
+    return false;
+  }
+
+  if (!phone.trim()) {
+    alert("يرجى إدخال رقم الجوال");
+    return false;
+  }
+
+  if (!fromLocation.trim()) {
+    alert("يرجى تحديد موقع الاستلام");
+    return false;
+  }
+
+  if (!toLocation.trim()) {
+    alert("يرجى تحديد الوجهة");
+    return false;
+  }
+
+  if (!acceptedTerms) {
+    alert("يجب الموافقة على الشروط والأحكام");
+    return false;
+  }
+
+  return true;
+};
 
   const handleBackStep = () => {
     if (step > 1) {
@@ -311,6 +333,34 @@ export default function BookingModal({ isOpen, onClose, selectedServiceId }: Boo
               </div>
             </div>
           )}
+
+<div className="space-y-2">
+  <label className="text-sm font-medium text-white">
+    الاسم الكامل
+  </label>
+
+  <input
+    type="text"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    placeholder="أدخل الاسم الكامل"
+    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-brand-green"
+  />
+</div>
+
+<div className="space-y-2">
+  <label className="text-sm font-medium text-white">
+    البريد الإلكتروني
+  </label>
+
+  <input
+    type="email"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    placeholder="example@email.com"
+    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-white outline-none focus:border-brand-green"
+  />
+</div>
 
           {/* STEP 2: Address and Phone inputs */}
           {step === 2 && (
@@ -641,7 +691,7 @@ export default function BookingModal({ isOpen, onClose, selectedServiceId }: Boo
           {step < 3 ? (
             <button
               id="wizard-next-btn"
-              onClick={handleNextStep}
+              onClick={() => { if (!validateStep2()) return; handleNextStep(); }}
               className="bg-brand-green hover:bg-brand-green-hover text-white px-6 py-3 rounded-xl font-bold text-xs shadow transition-colors flex items-center gap-1.5 cursor-pointer sleek-glow-btn"
             >
               <span>التالي</span>
@@ -671,3 +721,4 @@ export default function BookingModal({ isOpen, onClose, selectedServiceId }: Boo
     </div>
   );
 }
+

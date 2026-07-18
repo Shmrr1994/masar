@@ -70,8 +70,22 @@ export default function RootLayout({
       dir="rtl"
       suppressHydrationWarning
     >
-      <body className={cairo.className}>
-        {children}
+      <body
+        className={`${cairo.className} antialiased`}
+      >
+        {/* Saudi Background */}
+        <div className="saudi-pattern" />
+
+        {/* Animated Glow */}
+        <div className="background-glow" />
+
+        {/* Noise Overlay */}
+        <div className="noise-overlay" />
+
+        {/* Main App */}
+        <main className="relative z-10 min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   );

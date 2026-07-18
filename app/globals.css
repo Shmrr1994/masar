@@ -1,76 +1,98 @@
 @import "tailwindcss";
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+/* =====================================================
+   MASAR PREMIUM UI V2
+====================================================== */
+
+:root{
+
+--background:#07111F;
+
+--foreground:#F8FAFC;
+
+--brand:#10B981;
+
+--brand-hover:#059669;
+
+--card:rgba(255,255,255,.06);
+
+--glass:rgba(255,255,255,.05);
+
+--border:rgba(255,255,255,.08);
+
+--radius:24px;
+
 }
 
-* {
-  box-sizing: border-box;
-}
-/* ================================
-   MASAR Design System v1
-================================ */
+*{
 
-:root {
-  --background: #f8faf8;
-  --foreground: #111827;
+margin:0;
 
-  --primary: #006c35;
-  --primary-hover: #0b8a49;
+padding:0;
 
-  --secondary: #eef7f1;
+box-sizing:border-box;
 
-  --card: rgba(255,255,255,.72);
-
-  --border: rgba(0,108,53,.08);
-
-  --shadow: 0 15px 40px rgba(0,0,0,.08);
-
-  --radius: 20px;
-}
-
-.dark {
-  --background: #091017;
-  --foreground: #ffffff;
-
-  --primary: #19c37d;
-  --primary-hover: #29d48a;
-
-  --secondary: #111827;
-
-  --card: rgba(17,24,39,.72);
-
-  --border: rgba(255,255,255,.08);
-
-  --shadow: 0 15px 40px rgba(0,0,0,.35);
 }
 
 html{
-    scroll-behavior:smooth;
+
+scroll-behavior:smooth;
+
 }
 
 body{
 
-    background:var(--background);
-    color:var(--foreground);
+min-height:100vh;
 
-    transition:.35s;
+overflow-x:hidden;
 
-    font-family:
-    "IBM Plex Sans Arabic",
-    "Noto Sans Arabic",
-    sans-serif;
+background:#07111F;
+
+color:white;
+
+font-family:
+
+"Cairo",
+
+"Noto Sans Arabic",
+
+sans-serif;
+
+position:relative;
 
 }
 
-/* خلفية عامة */
+/* ===========================
+   Saudi Pattern
+=========================== */
 
-body::before{
+.saudi-pattern{
 
-content:"";
+position:fixed;
+
+inset:0;
+
+background-image:url("/images/saudi-pattern.png");
+
+background-size:cover;
+
+background-position:center;
+
+background-repeat:no-repeat;
+
+opacity:.055;
+
+pointer-events:none;
+
+z-index:-5;
+
+}
+
+/* ===========================
+ Animated Gradient
+=========================== */
+
+.background-glow{
 
 position:fixed;
 
@@ -78,60 +100,681 @@ inset:0;
 
 pointer-events:none;
 
+z-index:-6;
+
 background:
 
-linear-gradient(
-180deg,
-rgba(0,108,53,.03),
-transparent
-),
+radial-gradient(circle at 15% 20%,
+rgba(16,185,129,.18),
+transparent 30%),
 
-url("/images/saudi-pattern.png");
+radial-gradient(circle at 90% 10%,
+rgba(16,185,129,.12),
+transparent 30%),
 
-background-size:cover;
+radial-gradient(circle at 60% 100%,
+rgba(0,255,180,.08),
+transparent 40%);
 
-background-position:center;
+animation:
 
-opacity:.05;
-
-z-index:-1;
-
-}
-
-/* Cards */
-
-.sleek-card{
-
-background:var(--card);
-
-backdrop-filter:blur(20px);
-
-border:1px solid var(--border);
-
-border-radius:var(--radius);
-
-box-shadow:var(--shadow);
+gradientMove 14s ease-in-out infinite;
 
 }
 
-/* Buttons */
+@keyframes gradientMove{
 
-.sleek-btn{
+0%{
 
-background:var(--primary);
+transform:translate(0,0);
+
+}
+
+50%{
+
+transform:translate(-50px,-35px);
+
+}
+
+100%{
+
+transform:translate(0,0);
+
+}
+
+}
+
+/* ===========================
+ Noise Overlay
+=========================== */
+
+.noise-overlay{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+opacity:.035;
+
+background-image:
+
+radial-gradient(circle,#ffffff 1px,transparent 1px);
+
+background-size:14px 14px;
+
+z-index:-4;
+
+}
+
+/* ===========================
+ Selection
+=========================== */
+
+::selection{
+
+background:#10B981;
 
 color:white;
 
-border-radius:16px;
+}
 
-transition:.3s;
+/* ===========================
+ Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#08131E;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#10B981;
+
+border-radius:100px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#14D68B;
+
+}
+/* =====================================================
+   PREMIUM COMPONENTS
+====================================================== */
+
+/* ---------- Glass ---------- */
+
+.glass{
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+-webkit-backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+box-shadow:
+0 10px 35px rgba(0,0,0,.25);
+
+}
+
+/* ---------- Cards ---------- */
+
+.sleek-card{
+
+position:relative;
+
+overflow:hidden;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:24px;
+
+backdrop-filter:blur(24px);
+
+transition:
+all .45s ease;
+
+}
+
+.sleek-card:hover{
+
+transform:
+translateY(-8px)
+scale(1.015);
+
+border-color:#10B981;
+
+box-shadow:
+
+0 25px 70px rgba(16,185,129,.28);
+
+}
+
+.sleek-card::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,255,255,.08),
+transparent,
+rgba(16,185,129,.08)
+);
+
+opacity:0;
+
+transition:.45s;
+
+}
+
+.sleek-card:hover::before{
+
+opacity:1;
+
+}
+
+/* ---------- Buttons ---------- */
+
+.sleek-btn{
+
+position:relative;
+
+overflow:hidden;
+
+background:
+
+linear-gradient(
+135deg,
+#10B981,
+#059669
+);
+
+color:white;
+
+border:none;
+
+border-radius:18px;
+
+padding:14px 28px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:
+all .35s ease;
 
 }
 
 .sleek-btn:hover{
 
-background:var(--primary-hover);
+transform:
 
-transform:translateY(-2px);
+translateY(-2px)
+scale(1.03);
+
+box-shadow:
+
+0 0 40px rgba(16,185,129,.40);
+
+}
+
+.sleek-btn:active{
+
+transform:scale(.96);
+
+}
+
+.sleek-btn::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-100%;
+
+width:100%;
+
+height:100%;
+
+background:
+
+linear-gradient(
+90deg,
+transparent,
+rgba(255,255,255,.35),
+transparent
+);
+
+transition:.7s;
+
+}
+
+.sleek-btn:hover::before{
+
+left:120%;
+
+}
+
+/* ---------- Inputs ---------- */
+
+.sleek-input{
+
+width:100%;
+
+padding:15px 18px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+color:white;
+
+outline:none;
+
+transition:.35s;
+
+}
+
+.sleek-input::placeholder{
+
+color:#9CA3AF;
+
+}
+
+.sleek-input:focus{
+
+border-color:#10B981;
+
+box-shadow:
+
+0 0 20px rgba(16,185,129,.20);
+
+}
+
+/* ---------- Section ---------- */
+
+.section{
+
+padding-top:110px;
+
+padding-bottom:110px;
+
+position:relative;
+
+}
+
+/* ---------- Titles ---------- */
+
+.section-title{
+
+font-size:48px;
+
+font-weight:800;
+
+line-height:1.2;
+
+}
+
+.section-subtitle{
+
+margin-top:18px;
+
+color:#CBD5E1;
+
+font-size:18px;
+
+max-width:700px;
+
+}
+
+/* ---------- Glow ---------- */
+
+.glow{
+
+transition:.35s;
+
+}
+
+.glow:hover{
+
+box-shadow:
+
+0 0 25px rgba(16,185,129,.25),
+
+0 0 60px rgba(16,185,129,.18);
+
+}
+/* =====================================================
+   PREMIUM ANIMATIONS
+====================================================== */
+
+@keyframes floating {
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.float{
+animation:floating 5s ease-in-out infinite;
+}
+
+/* ---------------------------- */
+
+@keyframes pulseGlow{
+
+0%{
+box-shadow:0 0 0 rgba(16,185,129,.15);
+}
+
+50%{
+box-shadow:0 0 35px rgba(16,185,129,.35);
+}
+
+100%{
+box-shadow:0 0 0 rgba(16,185,129,.15);
+}
+
+}
+
+.pulse-glow{
+
+animation:pulseGlow 3s infinite;
+
+}
+
+/* ---------------------------- */
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:
+translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+}
+
+.fade-up{
+
+animation:
+fadeUp .8s ease forwards;
+
+}
+
+/* ---------------------------- */
+
+@keyframes fadeLeft{
+
+from{
+
+opacity:0;
+
+transform:
+translateX(-35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateX(0);
+
+}
+
+}
+
+.fade-left{
+
+animation:
+fadeLeft .7s ease forwards;
+
+}
+
+/* ---------------------------- */
+
+@keyframes fadeRight{
+
+from{
+
+opacity:0;
+
+transform:
+translateX(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:
+translateX(0);
+
+}
+
+}
+
+.fade-right{
+
+animation:
+fadeRight .7s ease forwards;
+
+}
+
+/* ---------------------------- */
+
+.scale-hover{
+
+transition:.35s;
+
+}
+
+.scale-hover:hover{
+
+transform:scale(1.04);
+
+}
+
+/* ---------------------------- */
+
+.rotate-hover{
+
+transition:.35s;
+
+}
+
+.rotate-hover:hover{
+
+transform:rotate(-2deg);
+
+}
+
+/* ---------------------------- */
+
+.hero-gradient{
+
+background:
+
+linear-gradient(
+
+135deg,
+
+rgba(16,185,129,.15),
+
+transparent,
+
+rgba(0,255,180,.08)
+
+);
+
+}
+
+/* ---------------------------- */
+
+.hero-overlay{
+
+position:absolute;
+
+inset:0;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(7,17,31,.25),
+
+rgba(7,17,31,.88)
+
+);
+
+pointer-events:none;
+
+}
+
+/* ---------------------------- */
+
+.text-gradient{
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#10B981,
+
+#34D399,
+
+#6EE7B7
+
+);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+/* ---------------------------- */
+
+.shadow-green{
+
+box-shadow:
+
+0 25px 60px rgba(16,185,129,.25);
+
+}
+
+/* ---------------------------- */
+
+.border-gradient{
+
+position:relative;
+
+}
+
+.border-gradient::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+padding:1px;
+
+border-radius:inherit;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#10B981,
+
+transparent,
+
+#10B981
+
+);
+
+-webkit-mask:
+
+linear-gradient(#fff 0 0) content-box,
+
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+
+mask-composite:exclude;
+
+pointer-events:none;
+
+}
+
+/* ---------------------------- */
+
+.container-premium{
+
+max-width:1450px;
+
+margin:auto;
+
+padding-inline:32px;
 
 }

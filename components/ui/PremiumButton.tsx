@@ -1,73 +1,101 @@
 "use client";
 
-import { ButtonHTMLAttributes, ReactNode } from "react";
-import { ArrowLeft } from "lucide-react";
+import { motion } from "framer-motion";
 
-interface PremiumButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
-  fullWidth?: boolean;
+interface Props {
+
+  children: React.ReactNode;
+
+  onClick?: () => void;
+
+  className?: string;
+
 }
 
 export default function PremiumButton({
+
   children,
-  fullWidth = false,
+
+  onClick,
+
   className = "",
-  ...props
-}: PremiumButtonProps) {
-  return (
-    <button
-      {...props}
-      className={`
-        group
-        relative
-        overflow-hidden
 
-        ${fullWidth ? "w-full" : ""}
+}: Props){
 
-        rounded-2xl
-        bg-gradient-to-r
-        from-brand-green
-        to-emerald-500
+  return(
 
-        px-7
-        py-4
+<motion.button
 
-        font-bold
-        text-white
+whileHover={{
+scale:1.04,
+y:-3,
+}}
 
-        shadow-lg
-        shadow-brand-green/20
+whileTap={{
+scale:.96
+}}
 
-        transition-all
-        duration-300
+onClick={onClick}
 
-        hover:scale-105
-        hover:shadow-[0_0_40px_rgba(34,197,94,.45)]
-        hover:tracking-wide
+className={`
+relative
 
-        active:scale-95
+overflow-hidden
 
-        ${className}
-      `}
-    >
-      <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+rounded-2xl
 
-      <span className="relative z-10 flex items-center justify-center gap-3">
+px-8
 
-        {children}
+py-4
 
-        <ArrowLeft
-          className="
-            w-5
-            h-5
-            transition-transform
-            duration-300
-            group-hover:-translate-x-1
-          "
-        />
+font-bold
 
-      </span>
-    </button>
-  );
+text-white
+
+bg-gradient-to-r
+
+from-emerald-600
+
+to-green-500
+
+shadow-xl
+
+shadow-green-900/30
+
+transition-all
+
+${className}
+
+`}
+
+>
+
+<div
+
+className="
+absolute
+inset-0
+
+bg-white/10
+
+opacity-0
+
+hover:opacity-100
+
+transition
+
+"
+
+/>
+
+<span className="relative">
+
+{children}
+
+</span>
+
+</motion.button>
+
+  )
+
 }

@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
 
+import BackgroundPattern from "@/components/ui/BackgroundPattern";
+
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -70,22 +72,10 @@ export default function RootLayout({
       dir="rtl"
       suppressHydrationWarning
     >
-      <body
-        className={`${cairo.className} antialiased`}
-      >
-        {/* Saudi Background */}
-        <div className="saudi-pattern" />
+      <body className={cairo.className}>
+        <BackgroundPattern />
 
-        {/* Animated Glow */}
-        <div className="background-glow" />
-
-        {/* Noise Overlay */}
-        <div className="noise-overlay" />
-
-        {/* Main App */}
-        <main className="relative z-10 min-h-screen">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );

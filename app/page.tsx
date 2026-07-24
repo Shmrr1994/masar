@@ -2,18 +2,19 @@
 
 import { useState } from "react";
 
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Navbar from "@/components/layout/navbar/Navbar";
 
-import Hero from "../components/sections/Hero";
-import Services from "../components/sections/Services";
-import HowItWorks from "../components/sections/HowItWorks";
-import Stats from "../components/sections/Stats";
-import CoverageMap from "../components/sections/CoverageMap";
-import WhyMasar from "../components/sections/WhyMasar";
-import Testimonials from "../components/sections/Testimonials";
-import CTA from "../components/sections/CTA";
-import BookingModal from "../components/sections/BookingModal";
+
+import Hero from "@/components/home/Hero";
+
+import Services from "@/components/home/Services";
+import HowItWorks from "@/components/home/HowItWorks";
+import Stats from "@/components/home/Stats";
+import Coverage from "@/components/home/Coverage";
+import WhyMasar from "@/components/home/WhyMasar";
+import Testimonials from "@/components/home/Testimonials";
+import CTA from "@/components/home/CTA";
+import BookingModal from "@/components/sections/BookingModal";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -39,7 +40,7 @@ export default function Home() {
 
         <Stats />
 
-        <CoverageMap />
+        <Coverage />
 
         <WhyMasar />
 
@@ -48,8 +49,7 @@ export default function Home() {
         <CTA onOpenBooking={() => openBooking()} />
       </main>
 
-      <Footer />
-
+      
       <BookingModal
         isOpen={bookingOpen}
         onClose={() => setBookingOpen(false)}
